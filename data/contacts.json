@@ -1,0 +1,30 @@
+[
+  {
+    "full_name": "John Smith",
+    "phone_number": "1231231234",
+    "email": "asdf@gmail.com",
+    "tags": "a,b,c",
+    "id": 1
+  },
+  {
+    "full_name": "Jane Smith",
+    "phone_number": "1231231234",
+    "email": "asdf@gmail.com",
+    "tags": "d, e, f",
+    "id": 2
+  },
+  {
+    "full_name": "Lawrence Tam",
+    "phone_number": "1231231234",
+    "email": "asdf@gmail.com",
+    "tags": "c, h, yt",
+    "id": 3
+  },
+  {
+    "full_name": "test 2",
+    "phone_number": "1231233214",
+    "email": "asdf@gmail.com",
+    "tags": "test1, test2",
+    "id": 4
+  }
+]

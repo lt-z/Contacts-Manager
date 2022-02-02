@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./stylesheets/style.css" />
+  <title>Contact Manager</title>
+  <script src="/javascripts/handlebars.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Contact Manager</h1>
+    <h2>Using JavaScript, HTML, and Handlebars</h2>
+  </header>
+  <main>
+    <div id="add-search-bar">
+      <button class="btn add">Add Contact</button>
+      <input type="text" id="search" placeholder="Search">
+    </div>
+    <div id="contacts-wrapper">
+      <div id="no-contacts" class="hidden"></div>
+      <div id="contacts-list-wrapper">
+        <ul></ul>
+      </div>
+    </div>
+    <div id="create-contacts-wrapper" class="hidden">
+      <div class="form-wrapper">
+        <h3>Create Contact</h3>
+        <form>
+          <ul>
+            <li class="form-row">
+              <label for="full_name">Full Name:</label>
+              <input type="text" id="full_name" name="full_name" required>
+            </li>
+            <li class="form-row">
+              <label for="email">Email Address:</label>
+              <input type="text" id="email" name="email" required>
+            </li>
+            <li class="form-row">
+              <label for="phone_number">Telephone Number:</label>
+              <input type="text" id="phone_number" name="phone_number" required>
+            </li>
+            <li class="form-row">
+              <label for="tags">Tags:</label>
+              <input type="text" id="tags" name="tags">
+            </li>
+          </ul>
+          <div class="btns">
+            <input type="submit" class="btn" value="Submit">
+            <button type="button" class="btn cancel">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="edit-form-wrapper" class="hidden"></div>
+  </main>
+  <script id="contact-template" type="text/x-handlebars">
+    {{#each contacts}}
+    <li>
+      <h3>{{full_name}}</h3>
+      <dl>
+        <dt>Phone Number:</dt>
+        <dd>{{phone_number}}</dd>
+        <dt>Email:</dt>
+        <dd>{{email}}</dd>
+        {{#if tags}}
+        <dt>Tags:</dt>
+        <dd>
+          {{#each tags}}
+          <a href="#" data-tag={{this}}>#{{this}}</a>
+          {{/each}}
+        </dd>
+        {{/if}}
+        <div class="btns">
+          <button class="btn edit" data-id="{{id}}">Edit</button>
+          <button class="btn delete" data-id="{{id}}">Delete</button>
+        </div>
+    </li>
+    {{/each}}
+  </script>
+  <script id="edit-template" type="text/x-handlebars">
+    <div class="form-wrapper">
+      <h3>Edit Contact</h3>
+      <form data-id="{{id}}">
+        <ul>
+          <li class="form-row">
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" value="{{full_name}}" required>
+          </li>
+          <li class="form-row">
+            <label for="email">Email Address:</label>
+            <input type="text" id="email" name="email" value="{{email}}" required>
+          </li>
+          <li class="form-row">
+            <label for="phone_number">Telephone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{phone_number}}" required>
+          </li>
+          <li class="form-row">
+            <label for="tags">Tags:</label>
+            <input type="text" id="tags" name="tags" value="{{tags}}">
+          </li>
+        </ul>
+        <div class="btns">
+          <input type="submit" class="btn" value="Submit">
+          <button type="button" class="btn cancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </script>
+  <script type="module" src="javascripts/app.js"></script>
+</body>
+</html>
