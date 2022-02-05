@@ -9,6 +9,7 @@ class View {
     this.createContactForm = this.getElement('#create-contacts-wrapper');
     this.editContactForm = this.getElement('#edit-form-wrapper');
     this.noContacts = this.getElement('#no-contacts');
+    this.createTags = this.getElement('#tags');
 
     this._initLocalListeners();
     this._createTemplates();
@@ -35,6 +36,20 @@ class View {
         }
       }
     });
+
+    this.createTags.addEventListener('input', this._validateTags);
+  }
+
+  _validateTags(event) {
+    let tags = event.target;
+    let vals = tags.value.split(',').map(tag => tag.trim());
+    let valid = vals.every(val => vals.indexOf(val) === vals.lastIndexOf(val));
+    if (!valid) {
+      tags.setCustomValidity('Duplicate tags not allowed!');
+    } else {
+      tags.setCustomValidity('');
+    }
+    tags.reportValidity();
   }
 
   _toggleHidden(node) {
@@ -106,9 +121,11 @@ class View {
       let contact = {};
       for (let idx = 0; idx < form.elements.length; idx += 1) {
         let elem = form.elements[idx];
-        if (elem !== 'submit') {
-          contact[elem.name] = elem.value;
+        if (elem.type === 'submit') break;
+        if (elem.name === 'tags') {
+          elem.value = this._formatTags(elem.value);
         }
+        contact[elem.name] = elem.value;
       }
 
       handler(contact);
@@ -129,6 +146,9 @@ class View {
 
   displayEditForm(contact) {
     this.editContactForm.innerHTML = this.templates['edit-template'](contact);
+
+    let editTags = this.editContactForm.querySelector('#edit-tags');
+    editTags.addEventListener('input', this._validateTags);
   }
 
   bindEditContact(handler) {
@@ -141,15 +161,21 @@ class View {
       let contact = {};
       for (let idx = 0; idx < form.elements.length; idx += 1) {
         let elem = form.elements[idx];
-        if (elem !== 'submit') {
-          contact[elem.name] = elem.value;
+        if (elem.type === 'submit') break;
+        if (elem.name === 'tags') {
+          elem.value = this._formatTags(elem.value);
         }
+        contact[elem.name] = elem.value;
       }
 
       handler(id, contact);
       form.reset();
       this._toggleHidden(this.editContactForm);
     });
+  }
+
+  _formatTags(tags) {
+    return tags.split(',').map(tag => tag.trim()).filter(tag => tag).join(',');
   }
 
   bindSearchBar(handler) {

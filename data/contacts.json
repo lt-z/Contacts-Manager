@@ -1,30 +1,37 @@
 [
   {
-    "full_name": "John Smith",
-    "phone_number": "1231231234",
-    "email": "asdf@gmail.com",
-    "tags": "a,b,c",
+    "full_name": "Lawrence Tam",
+    "phone_number": "123-123-1234",
+    "email": "ltam@email.com",
+    "tags": "tag,tag2",
     "id": 1
   },
   {
-    "full_name": "Jane Smith",
-    "phone_number": "1231231234",
-    "email": "asdf@gmail.com",
-    "tags": "d, e, f",
+    "full_name": "John Smith",
+    "phone_number": "123-321-3214",
+    "email": "jsmith@example.com",
+    "tags": "tag,tag2",
     "id": 2
   },
   {
-    "full_name": "Lawrence Tam",
-    "phone_number": "1231231234",
-    "email": "asdf@gmail.com",
-    "tags": "c, h, yt",
+    "full_name": "Jane Smith",
+    "phone_number": "123-123-1235",
+    "email": "janesmith@example.com",
+    "tags": "tag,tag3,tag4",
     "id": 3
   },
   {
-    "full_name": "test 2",
-    "phone_number": "1231233214",
-    "email": "asdf@gmail.com",
-    "tags": "test1, test2",
+    "full_name": "Fannie Mae",
+    "phone_number": "098-876-5483",
+    "email": "fmae@gmail.com",
+    "tags": "loans,government",
     "id": 4
+  },
+  {
+    "full_name": "Freddie Mac",
+    "phone_number": "745-610-1273",
+    "email": "fmac@gmail.com",
+    "tags": "loans,government",
+    "id": 5
   }
 ]
